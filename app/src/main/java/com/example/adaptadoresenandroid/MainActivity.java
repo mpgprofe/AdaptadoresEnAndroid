@@ -27,6 +27,9 @@ Spinner modulosProfesionales, spinnerCoches;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Para poner a pantalla completa
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+
         modulosProfesionales = findViewById(R.id.spinnerModullos);
         spinnerCoches = findViewById(R.id.spinnerCoches);
 
@@ -54,7 +57,7 @@ Spinner modulosProfesionales, spinnerCoches;
         });
 
 
-        AdaptadorParaCoches adaptadorParaCoches = new AdaptadorParaCoches(this,R.layout.vista_coches);
+        AdaptadorParaCoches adaptadorParaCoches = new AdaptadorParaCoches(this,R.layout.vista_coches,coches);
         spinnerCoches.setAdapter(adaptadorParaCoches);
 
 
@@ -66,6 +69,10 @@ Spinner modulosProfesionales, spinnerCoches;
 
         public AdaptadorParaCoches(@NonNull Context context, int resource) {
             super(context, resource);
+        }
+
+        public AdaptadorParaCoches(@NonNull Context context, int resource, @NonNull String[] objects) {
+            super(context, resource, objects);
         }
 
         @NonNull
